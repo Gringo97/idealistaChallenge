@@ -13,6 +13,7 @@ sealed class Operation {
             return when (operation) {
                 "rent" -> Rent
                 "sale" -> Sale
+                else ->  Unknown
             }
         }
     }
