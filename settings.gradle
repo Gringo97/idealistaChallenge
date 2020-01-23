@@ -1,2 +1,2 @@
-include ':app', ':core', ':list'
+include ':app', ':core', ':list', ':addetails'
 rootProject.name='Challenge'
