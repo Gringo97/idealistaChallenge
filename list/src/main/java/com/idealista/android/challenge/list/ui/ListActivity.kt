@@ -1,11 +1,12 @@
 package com.idealista.android.challenge.list.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.idealista.android.challenge.core.Addressable
-import com.idealista.android.challenge.core.intentTo
+import com.idealista.android.challenge.addetail.ui.ADDETAIL
+import com.idealista.android.challenge.addetail.ui.AdDetailActivity
 import com.idealista.android.challenge.list.ListAssembler
 import com.idealista.android.challenge.list.R
 
@@ -35,4 +36,9 @@ class ListActivity : AppCompatActivity(), ListView {
         })
     }
 
+    override fun navigateToAdDetail(adModel: AdModel) {
+        val intent = Intent(baseContext, AdDetailActivity::class.java)
+        intent.putExtra(ADDETAIL, adModel.id)
+        startActivity(intent)
+    }
 }

@@ -1,5 +1,10 @@
 package com.idealista.android.challenge.list.ui
 
+import android.content.Context
+import android.content.Intent
+import androidx.core.content.ContextCompat.startActivity
+import com.idealista.android.challenge.addetail.ui.ADDETAIL
+import com.idealista.android.challenge.addetail.ui.AdDetailActivity
 import com.idealista.android.challenge.core.CoreAssembler
 import com.idealista.android.challenge.core.api.model.CommonError
 import com.idealista.android.challenge.core.wrench.usecase.UseCase
@@ -25,6 +30,8 @@ class ListPresenter(private val view: ListView) {
             }.run(CoreAssembler.executor)
     }
 
-    fun onAdClicked(ad: AdModel) {}
+    fun onAdClicked(ad: AdModel) {
+        view.navigateToAdDetail(ad)
+    }
 
 }

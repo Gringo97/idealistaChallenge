@@ -26,10 +26,15 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
     override fun getItemCount(): Int = ads.size
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        with (ads[position]) {
-            if (thumbnail.isNotEmpty()) Picasso.with(holder.image.context).load(thumbnail).into(holder.image)
+        with(ads[position]) {
+            if (thumbnail.isNotEmpty()) Picasso.with(holder.image.context).load(thumbnail).into(
+                holder.image
+            )
             holder.title.text = title
             holder.price.text = price
+            holder.itemView.setOnClickListener {
+                listener.onAdClicked(this)
+            }
         }
     }
 
