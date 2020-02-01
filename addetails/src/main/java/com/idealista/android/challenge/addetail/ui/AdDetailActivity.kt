@@ -1,7 +1,6 @@
 package com.idealista.android.challenge.addetail.ui
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.idealista.android.challenge.addetail.AdDetailAssembler
 import com.idealista.android.challenge.addetail.R
@@ -15,22 +14,29 @@ class AdDetailActivity : AppCompatActivity(), AdDetailView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ad_detail_activity)
         AdDetailAssembler.presenter = AdDetailPresenter(this)
-        AdDetailAssembler.presenter.onAdNeeded(intent.extras!!.getString(ADDETAIL)!!)
+        AdDetailAssembler.presenter.onAdNeeded(intent.extras.getString(ADDETAIL))
+        AdDetailAssembler.preferences.init(baseContext)
+
     }
 
     override fun render(adDetail: AdDetailModel) {
         title_tv.text = adDetail.title
-        extended_property_tv.apply {
-            if (adDetail.extendedPropertyType.isNotEmpty()) {
-                text = adDetail.extendedPropertyType
-            } else {
-                visibility = View.GONE
-            }
-        }
         view_pager.apply {
             adapter = AdDetailMultimediaAdapter(context, adDetail.thumbnailsList)
+        }
+        btn_favorite.apply {
+            setOnClickListener {
+                AdDetailAssembler.presenter.setAdFavorite(adDetail.adid)
+            }
         }
         price_tv.text = adDetail.price
         comments_tv.text = adDetail.propertyComment
     }
+
+    override fun setFavorite(drawable: Int) {
+        btn_favorite.setImageDrawable(resources.getDrawable(drawable, null))
+    }
+
+
 }
+

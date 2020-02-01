@@ -6,7 +6,7 @@ import com.idealista.android.challenge.core.model.entity.AdDetailEntity
 
 data class AdDetail(
     val adid: Int,
-    val extendedPropertyType: String,
+    val extendedPropertyType: Typology,
     val thumbnailsList: List<String>?,
     val operation: Operation,
     val price: Double,
@@ -16,7 +16,7 @@ data class AdDetail(
 
 fun AdDetailEntity.toDomain() = AdDetail(
     adid,
-    extendedPropertyType,
+    Typology.from(extendedPropertyType),
     multimedia.images?.map {
         it.url
     },

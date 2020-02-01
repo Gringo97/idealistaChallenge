@@ -12,19 +12,21 @@ data class AdDetailModel(
     val title: String,
     val thumbnailsList: List<String>?,
     val price: String,
-    val propertyComment: String,
-    val extendedPropertyType: String
+    val propertyComment: String
 )
 
 
 fun AdDetail.toModel() =
     AdDetailModel(
         adid,
-        formatTitle(typology, operation),
+        if (typology.string().isEmpty()) {
+            formatTitle(extendedPropertyType, operation)
+        } else {
+            formatTitle(typology, operation)
+        },
         thumbnailsList,
         formatPrice(price),
-        propertyComment,
-        extendedPropertyType.capitalize()
+        propertyComment
 
     )
 
@@ -33,6 +35,6 @@ private fun formatPrice(price: Double) = "$price €"
 private fun formatTitle(typology: Typology, operation: Operation) =
     CoreAssembler.stringsProvider.string(
         R.string.typology_at_operation,
-        typology.string(),
+        typology.string().capitalize(),
         operation.string().toLowerCase()
     )
