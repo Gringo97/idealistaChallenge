@@ -10,7 +10,6 @@ sealed class Typology {
     object Duplex : Typology()
     object Chalet : Typology()
     object CountryHouse : Typology()
-    object Homes : Typology()
     object Unknown : Typology()
 
     companion object {
@@ -22,7 +21,6 @@ sealed class Typology {
                 "duplex" -> Duplex
                 "chalet" -> Chalet
                 "countryHouse" -> CountryHouse
-                "homes" -> Homes
                 else -> Unknown
             }
         }
@@ -36,10 +34,10 @@ sealed class Typology {
             Duplex -> R.string.typology_duplex
             Chalet -> R.string.typology_chalet
             CountryHouse -> R.string.typology_countryHouse
-            Homes -> R.string.typology_homes
             Unknown -> 0
         }
     }
 }
 
-fun Typology.string() = if (this !is Typology.Unknown) CoreAssembler.stringsProvider.string(stringId()) else ""
+fun Typology.string() =
+    if (this !is Typology.Unknown) CoreAssembler.stringsProvider.string(stringId()) else ""
