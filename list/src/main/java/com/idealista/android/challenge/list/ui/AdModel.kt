@@ -12,10 +12,8 @@ data class AdModel(
     val thumbnail: String,
     val price: String,
     val title: String,
-    val detailUrl : String
+    val detailUrl: String
 )
-
-///https://android.jlelse.eu/mvp-with-rxjava2-room-koin-6f9492b94500
 
 fun Ad.toModel() =
     AdModel(
@@ -25,9 +23,11 @@ fun Ad.toModel() =
         formatTitle(typology, operation),
         detailUrl
     )
+
 private fun formatPrice(price: Double) = "$price €"
 private fun formatTitle(typology: Typology, operation: Operation) =
     CoreAssembler.stringsProvider.string(
         R.string.typology_at_operation,
         typology.string(),
-        operation.string().toLowerCase())
+        operation.string().toLowerCase()
+    )

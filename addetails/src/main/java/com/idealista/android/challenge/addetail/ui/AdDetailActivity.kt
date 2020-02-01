@@ -29,6 +29,7 @@ class AdDetailActivity : AppCompatActivity(), AdDetailView {
                 AdDetailAssembler.presenter.setAdFavorite(adDetail.adid)
             }
         }
+        btn_favorite.setImageDrawable(resources.getDrawable(adDetail.drawableFavorite, null))
         price_tv.text = adDetail.price
         comments_tv.text = adDetail.propertyComment
     }
