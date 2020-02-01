@@ -1,5 +1,6 @@
 package com.idealista.android.challenge.addetail.ui
 
+import com.idealista.android.challenge.addetail.AdDetailAssembler
 import com.idealista.android.challenge.addetail.domain.AdDetail
 import com.idealista.android.challenge.core.CoreAssembler
 import com.idealista.android.challenge.core.R
@@ -12,7 +13,8 @@ data class AdDetailModel(
     val title: String,
     val thumbnailsList: List<String>?,
     val price: String,
-    val propertyComment: String
+    val propertyComment: String,
+    val drawableFavorite: Int
 )
 
 
@@ -26,7 +28,8 @@ fun AdDetail.toModel() =
         },
         thumbnailsList,
         formatPrice(price),
-        propertyComment
+        propertyComment,
+        setAdFavoriteDrawable(adid)
 
     )
 
@@ -38,3 +41,15 @@ private fun formatTitle(typology: Typology, operation: Operation) =
         typology.string().capitalize(),
         operation.string().toLowerCase()
     )
+
+
+fun setAdFavoriteDrawable(id: Int): Int {
+    return when (AdDetailAssembler.preferences.getAd(id)) {
+        null -> {
+            R.drawable.ic_like_unused
+        }
+        else -> {
+            R.drawable.ic_like
+        }
+    }
+}

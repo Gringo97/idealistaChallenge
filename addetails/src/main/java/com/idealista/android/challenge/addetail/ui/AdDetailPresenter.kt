@@ -10,7 +10,6 @@ import com.idealista.android.challenge.core.wrench.usecase.UseCase
 
 class AdDetailPresenter(private val view: AdDetailView) {
 
-
     fun onAdNeeded(urlDetail: String) {
         UseCase<CommonError, AdDetail>()
             .bg(
@@ -27,25 +26,13 @@ class AdDetailPresenter(private val view: AdDetailView) {
                     },
                     { adDetailModel ->
                         view.render(adDetailModel)
-                        view.setFavorite(
-                            if (AdDetailAssembler.preferences.getAd(adDetailModel.adid) == null) {
-                                R.drawable.ic_like_unused
-                            } else {
-                                R.drawable.ic_like
-                            }
-                        )
-
-
                     }
                 )
             }.run(CoreAssembler.executor)
     }
 
-
     fun setAdFavorite(adId: Int) {
-        val value = AdDetailAssembler.preferences.getAd(adId)
-
-        when (value) {
+        when (AdDetailAssembler.preferences.getAd(adId)) {
             null -> {
                 AdDetailAssembler.preferences.adAd(adId)
                 view.setFavorite(R.drawable.ic_like)
@@ -53,7 +40,6 @@ class AdDetailPresenter(private val view: AdDetailView) {
             "1" -> {
                 AdDetailAssembler.preferences.removeAd(adId)
                 view.setFavorite(R.drawable.ic_like_unused)
-
             }
         }
     }
