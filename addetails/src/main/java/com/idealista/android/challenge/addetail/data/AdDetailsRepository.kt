@@ -7,5 +7,5 @@ import com.idealista.android.challenge.core.wrench.type.Either
 
 class AdDetailsRepository(private val dataSource: AdDetailsDataSource) {
     fun loadDetails(detailUrl: String): Either<CommonError, AdDetail> =
-        dataSource.loadDetails("https://api.myjson.com/bins/1807oe").map { it.toDomain() }
+        dataSource.loadDetails(detailUrl).map { it.toDomain() }
 }

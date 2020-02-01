@@ -24,7 +24,6 @@ class ListActivity : AppCompatActivity(), ListView {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(this@ListActivity)
             adapter = listAdapter
-
             ListAssembler.presenter.onListNeeded()
         }
     }
@@ -40,7 +39,7 @@ class ListActivity : AppCompatActivity(), ListView {
 
     override fun navigateToAdDetail(adModel: AdModel) {
         val intent = Intent(baseContext, AdDetailActivity::class.java)
-        intent.putExtra(ADDETAIL, adModel.id)
+        intent.putExtra(ADDETAIL, adModel.detailUrl)
         startActivity(intent)
     }
 

@@ -10,12 +10,12 @@ import com.idealista.android.challenge.core.wrench.usecase.UseCase
 class AdDetailPresenter(private val view: AdDetailView) {
 
 
-    fun onAdNeeded(id: String) {
+    fun onAdNeeded(urlDetail: String) {
         UseCase<CommonError, AdDetail>()
             .bg(
                 loadAdDetails(
                     AdDetailAssembler.adDetailsRepository,
-                    "https://api.myjson.com/bins/$id"
+                    urlDetail
                 )
             )
             .map { it.toModel() }
