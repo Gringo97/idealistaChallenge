@@ -11,7 +11,6 @@ const val ADDETAIL = "ADDETAIL"
 
 class AdDetailActivity : AppCompatActivity(), AdDetailView {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ad_detail_activity)
@@ -28,9 +27,10 @@ class AdDetailActivity : AppCompatActivity(), AdDetailView {
                 visibility = View.GONE
             }
         }
+        view_pager.apply {
+            adapter = AdDetailMultimediaAdapter(context, adDetail.thumbnailsList)
+        }
         price_tv.text = adDetail.price
         comments_tv.text = adDetail.propertyComment
-
-
     }
 }

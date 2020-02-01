@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".ui.AdDetailActivity">
 
     <LinearLayout
@@ -46,12 +46,12 @@
             android:textSize="@dimen/common_text_size"
             tools:text="2000€" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/grey10"
-            android:scrollbars="horizontal" />
+            android:layout_height="200dp"
+            android:layout_marginTop="@dimen/common_margin"
+            android:layout_marginBottom="@dimen/common_margin" />
 
         <TextView
             android:id="@+id/comments_tv"
@@ -67,7 +67,9 @@
             android:id="@+id/btn_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:contentDescription="@string/btn_favorite"
+            android:visibility="gone" />
 
     </LinearLayout>
 </ScrollView>

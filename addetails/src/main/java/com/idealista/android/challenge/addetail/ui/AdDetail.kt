@@ -5,13 +5,12 @@ import com.idealista.android.challenge.core.CoreAssembler
 import com.idealista.android.challenge.core.R
 import com.idealista.android.challenge.core.model.Operation
 import com.idealista.android.challenge.core.model.Typology
-import com.idealista.android.challenge.core.model.entity.MultimediasEntity
 import com.idealista.android.challenge.core.model.string
 
 data class AdDetailModel(
     val adid: Int,
     val title: String,
-    val multimedia: MultimediasEntity,
+    val thumbnailsList: List<String>?,
     val price: String,
     val propertyComment: String,
     val extendedPropertyType: String
@@ -22,7 +21,7 @@ fun AdDetail.toModel() =
     AdDetailModel(
         adid,
         formatTitle(typology, operation),
-        multimedia,
+        thumbnailsList,
         formatPrice(price),
         propertyComment,
         extendedPropertyType.capitalize()
