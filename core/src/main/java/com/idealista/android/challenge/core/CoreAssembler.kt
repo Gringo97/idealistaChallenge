@@ -1,5 +1,6 @@
 package com.idealista.android.challenge.core
 
+import com.idealista.android.challenge.core.api.AdDetailsApi
 import com.idealista.android.challenge.core.api.ApiClient
 import com.idealista.android.challenge.core.api.ListApi
 import com.idealista.android.challenge.core.wrench.executor.ChallengeUseCaseExecutor
@@ -18,5 +19,7 @@ object CoreAssembler {
     }
 
     val listApi: ListApi by lazy { ListApi(apiClient) }
+
+    val adDetailsApi : AdDetailsApi by lazy { AdDetailsApi(apiClient) }
 
 }
