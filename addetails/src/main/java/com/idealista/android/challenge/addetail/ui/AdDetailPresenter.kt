@@ -1,6 +1,7 @@
 package com.idealista.android.challenge.addetail.ui
 
 import com.idealista.android.challenge.addetail.AdDetailAssembler
+import com.idealista.android.challenge.addetail.R
 import com.idealista.android.challenge.addetail.domain.AdDetail
 import com.idealista.android.challenge.addetail.domain.loadAdDetails
 import com.idealista.android.challenge.core.CoreAssembler
@@ -24,11 +25,37 @@ class AdDetailPresenter(private val view: AdDetailView) {
                     {
 
                     },
-                    {
-                        view.render(it)
+                    { adDetailModel ->
+                        view.render(adDetailModel)
+                        view.setFavorite(
+                            if (AdDetailAssembler.preferences.getAd(adDetailModel.adid) == null) {
+                                R.drawable.ic_like_unused
+                            } else {
+                                R.drawable.ic_like
+                            }
+                        )
+
+
                     }
                 )
             }.run(CoreAssembler.executor)
+    }
+
+
+    fun setAdFavorite(adId: Int) {
+        val value = AdDetailAssembler.preferences.getAd(adId)
+
+        when (value) {
+            null -> {
+                AdDetailAssembler.preferences.adAd(adId)
+                view.setFavorite(R.drawable.ic_like)
+            }
+            "1" -> {
+                AdDetailAssembler.preferences.removeAd(adId)
+                view.setFavorite(R.drawable.ic_like_unused)
+
+            }
+        }
     }
 
 }

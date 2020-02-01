@@ -25,26 +25,33 @@
             android:textSize="@dimen/common_title_text_size"
             tools:text="Alquiler" />
 
-        <TextView
-            android:id="@+id/extended_property_tv"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="@dimen/common_padding"
-            android:paddingEnd="@dimen/common_padding"
-            android:textColor="@color/black"
-            android:textSize="@dimen/common_text_size"
-            tools:text="Piso duplex" />
-
-        <TextView
-            android:id="@+id/price_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:paddingStart="@dimen/common_padding"
-            android:paddingEnd="@dimen/common_padding"
-            android:textColor="@color/black"
-            android:textSize="@dimen/common_text_size"
-            tools:text="2000€" />
+            android:orientation="horizontal" android:paddingStart="@dimen/common_padding"
+            android:paddingEnd="@dimen/common_padding">
+                <TextView
+                    android:id="@+id/price_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/common_text_size"
+                    tools:text="2000€" />
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+            <ImageButton
+                android:id="@+id/btn_favorite"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:background="@color/white"
+                android:contentDescription="@string/btn_favorite"
+                android:visibility="visible"
+                tools:src="@drawable/ic_like"/>
+        </LinearLayout>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
@@ -63,13 +70,6 @@
             android:textSize="@dimen/common_text_size"
             tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." />
 
-        <ImageButton
-            android:id="@+id/btn_favorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:contentDescription="@string/btn_favorite"
-            android:visibility="gone" />
 
     </LinearLayout>
 </ScrollView>
