@@ -67,8 +67,7 @@
             android:id="@+id/btn_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            tools:src="@drawable/abc_vector_test" />
+            android:layout_gravity="center" />
 
     </LinearLayout>
 </ScrollView>
