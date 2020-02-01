@@ -8,4 +8,11 @@
     <string name="operation_rent">Alquiler</string>
     <string name="operation_sale">Venta</string>
     <string name="typology_at_operation">%1$s en %2$s</string>
+    <string name="error_no_network">No está conectado a ninguna red</string>
+    <string name="error_server">Problemas con el servidor, intentelo de nuevo más tarde.</string>
+    <string name="error_client">Problemas para conectarse con el servidor</string>
+    <string name="erro_unknown">Error desconocido</string>
+    <string name="error_canceled">Se ha cancelado la petición de datos</string>
+    <string name="error_not_found">No se ha  han encontrado los datos solicitados</string>
+    <string name="error_forbidden">Esta prohibido el acceso a este recurso</string>
 </resources>

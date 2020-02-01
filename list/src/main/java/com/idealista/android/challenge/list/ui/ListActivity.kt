@@ -2,6 +2,7 @@ package com.idealista.android.challenge.list.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -41,4 +42,10 @@ class ListActivity : AppCompatActivity(), ListView {
         intent.putExtra(ADDETAIL, adModel.id)
         startActivity(intent)
     }
+
+    override fun showError(errorMessage: String) {
+        Toast.makeText(baseContext,errorMessage,Toast.LENGTH_LONG).show()
+    }
+
+
 }
