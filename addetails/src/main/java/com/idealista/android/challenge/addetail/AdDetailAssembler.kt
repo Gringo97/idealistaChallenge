@@ -8,6 +8,6 @@ import com.idealista.android.challenge.core.CoreAssembler
 object AdDetailAssembler {
     private val listDataSource: AdDetailsDataSource by lazy { AdDetailsDataSource(CoreAssembler.adDetailsApi) }
 
-    lateinit var presenter : AdDetailPresenter
+    lateinit var presenter: AdDetailPresenter
     val adDetailsRepository: AdDetailsRepository by lazy { AdDetailsRepository(listDataSource) }
 }

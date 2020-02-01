@@ -31,28 +31,4 @@ class AdDetailPresenter(private val view: AdDetailView) {
             }.run(CoreAssembler.executor)
     }
 
-/*
-    fun onAdClicked(ad: AdModel) {
-        UseCase<CommonError, AdDetail>()
-            .bg(
-                loadAdDetails(
-                    AdDetailAssembler.adDetailsRepository,
-                    "https://api.myjson.com/bins/1807oe"
-                )
-            )
-            .map { it.toModel() }
-            .ui {
-                it.fold(
-                    {
-
-                    },
-                    {
-                        // view.render(it)
-
-                    }
-                )
-            }.run(CoreAssembler.executor)
-    }
-
- */
 }

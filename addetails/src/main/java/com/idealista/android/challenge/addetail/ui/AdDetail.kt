@@ -1,27 +1,39 @@
 package com.idealista.android.challenge.addetail.ui
 
 import com.idealista.android.challenge.addetail.domain.AdDetail
+import com.idealista.android.challenge.core.CoreAssembler
+import com.idealista.android.challenge.core.R
+import com.idealista.android.challenge.core.model.Operation
+import com.idealista.android.challenge.core.model.Typology
 import com.idealista.android.challenge.core.model.entity.MultimediasEntity
+import com.idealista.android.challenge.core.model.string
 
 data class AdDetailModel(
     val adid: Int,
-    val extendedPropertyType: String,
+    val title: String,
     val multimedia: MultimediasEntity,
-    val operation: String,
-    val price: Double,
+    val price: String,
     val propertyComment: String,
-    val propertyType: String
+    val extendedPropertyType: String
 )
 
 
-//TODO TEMPORAL MODEL WITH ALL DATA
 fun AdDetail.toModel() =
     AdDetailModel(
         adid,
-        extendedPropertyType,
+        formatTitle(typology, operation),
         multimedia,
-        operation,
-        price,
+        formatPrice(price),
         propertyComment,
-        propertyType
+        extendedPropertyType.capitalize()
+
+    )
+
+
+private fun formatPrice(price: Double) = "$price €"
+private fun formatTitle(typology: Typology, operation: Operation) =
+    CoreAssembler.stringsProvider.string(
+        R.string.typology_at_operation,
+        typology.string(),
+        operation.string().toLowerCase()
     )
