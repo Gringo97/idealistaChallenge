@@ -1,7 +1,6 @@
 package com.idealista.android.challenge.addetail.ui
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.idealista.android.challenge.addetail.AdDetailAssembler
 import com.idealista.android.challenge.addetail.R
