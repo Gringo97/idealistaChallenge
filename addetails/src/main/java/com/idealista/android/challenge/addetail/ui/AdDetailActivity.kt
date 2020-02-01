@@ -1,6 +1,7 @@
 package com.idealista.android.challenge.addetail.ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.idealista.android.challenge.addetail.AdDetailAssembler
 import com.idealista.android.challenge.addetail.R
@@ -16,7 +17,6 @@ class AdDetailActivity : AppCompatActivity(), AdDetailView {
         AdDetailAssembler.presenter = AdDetailPresenter(this)
         AdDetailAssembler.presenter.onAdNeeded(intent.extras.getString(ADDETAIL))
         AdDetailAssembler.preferences.init(baseContext)
-
     }
 
     override fun render(adDetail: AdDetailModel) {
@@ -32,6 +32,10 @@ class AdDetailActivity : AppCompatActivity(), AdDetailView {
         btn_favorite.setImageDrawable(resources.getDrawable(adDetail.drawableFavorite, null))
         price_tv.text = adDetail.price
         comments_tv.text = adDetail.propertyComment
+    }
+
+    override fun showError(errorMessage: String) {
+        Toast.makeText(baseContext, errorMessage, Toast.LENGTH_LONG).show()
     }
 
     override fun setFavorite(drawable: Int) {

@@ -6,6 +6,7 @@ import com.idealista.android.challenge.addetail.domain.AdDetail
 import com.idealista.android.challenge.addetail.domain.loadAdDetails
 import com.idealista.android.challenge.core.CoreAssembler
 import com.idealista.android.challenge.core.api.model.CommonError
+import com.idealista.android.challenge.core.api.model.string
 import com.idealista.android.challenge.core.wrench.usecase.UseCase
 
 class AdDetailPresenter(private val view: AdDetailView) {
@@ -21,8 +22,8 @@ class AdDetailPresenter(private val view: AdDetailView) {
             .map { it.toModel() }
             .ui {
                 it.fold(
-                    {
-
+                    {commonError ->
+                        view.showError(commonError.string())
                     },
                     { adDetailModel ->
                         view.render(adDetailModel)
@@ -37,7 +38,7 @@ class AdDetailPresenter(private val view: AdDetailView) {
                 AdDetailAssembler.preferences.adAd(adId)
                 view.setFavorite(R.drawable.ic_like)
             }
-            "1" -> {
+            else -> {
                 AdDetailAssembler.preferences.removeAd(adId)
                 view.setFavorite(R.drawable.ic_like_unused)
             }
