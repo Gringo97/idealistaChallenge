@@ -1,6 +1,7 @@
 package com.idealista.android.challenge.addetail.ui
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.idealista.android.challenge.addetail.AdDetailAssembler
@@ -17,6 +18,7 @@ class AdDetailActivity : AppCompatActivity(), AdDetailView {
         AdDetailAssembler.presenter = AdDetailPresenter(this)
         AdDetailAssembler.presenter.onAdNeeded(intent.extras.getString(ADDETAIL))
         AdDetailAssembler.preferences.init(baseContext)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun render(adDetail: AdDetailModel) {
@@ -41,6 +43,19 @@ class AdDetailActivity : AppCompatActivity(), AdDetailView {
     override fun setFavorite(drawable: Int) {
         btn_favorite.setImageDrawable(resources.getDrawable(drawable, null))
     }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id: Int = item.getItemId()
+        if (id == android.R.id.home) {
+            onBackPressed()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
+
 
 
 }
