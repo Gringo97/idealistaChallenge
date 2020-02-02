@@ -39,4 +39,5 @@ sealed class Typology {
     }
 }
 
-fun Typology.string() = if (this !is Typology.Unknown) CoreAssembler.stringsProvider.string(stringId()) else ""
+fun Typology.string() =
+    if (this !is Typology.Unknown) CoreAssembler.stringsProvider.string(stringId()) else ""

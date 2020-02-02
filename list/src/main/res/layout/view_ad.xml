@@ -33,7 +33,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_vertical"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="@dimen/common_text_size"
                 tools:text="Piso en alquiler" />
 
             <TextView
@@ -43,7 +43,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_vertical"
                 android:textColor="@color/black"
-                android:textSize="23sp"
+                android:textSize="@dimen/common_title_text_size"
                 tools:text="450€" />
 
         </LinearLayout>

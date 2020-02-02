@@ -1,13 +1,15 @@
 package com.idealista.android.challenge.list.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.idealista.android.challenge.core.Addressable
-import com.idealista.android.challenge.core.intentTo
+import com.idealista.android.challenge.addetail.ui.ADDETAIL
+import com.idealista.android.challenge.addetail.ui.AdDetailActivity
 import com.idealista.android.challenge.list.ListAssembler
 import com.idealista.android.challenge.list.R
+import kotlinx.android.synthetic.main.activity_list.*
 
 class ListActivity : AppCompatActivity(), ListView {
 
@@ -18,12 +20,12 @@ class ListActivity : AppCompatActivity(), ListView {
         setContentView(R.layout.activity_list)
         ListAssembler.presenter = ListPresenter(this)
         listAdapter = ListAdapter()
-        findViewById<RecyclerView>(R.id.recycler).apply {
+        recycler.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(this@ListActivity)
             adapter = listAdapter
+            ListAssembler.presenter.onListNeeded()
         }
-        ListAssembler.presenter.onListNeeded()
     }
 
     override fun render(list: ListModel) {
@@ -34,5 +36,16 @@ class ListActivity : AppCompatActivity(), ListView {
             }
         })
     }
+
+    override fun navigateToAdDetail(adModel: AdModel) {
+        val intent = Intent(baseContext, AdDetailActivity::class.java)
+        intent.putExtra(ADDETAIL, adModel.detailUrl)
+        startActivity(intent)
+    }
+
+    override fun showError(errorMessage: String) {
+        Toast.makeText(baseContext, errorMessage, Toast.LENGTH_LONG).show()
+    }
+
 
 }

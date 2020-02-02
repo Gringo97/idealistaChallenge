@@ -11,7 +11,8 @@ data class AdModel(
     val id: String,
     val thumbnail: String,
     val price: String,
-    val title: String
+    val title: String,
+    val detailUrl: String
 )
 
 fun Ad.toModel() =
@@ -19,11 +20,14 @@ fun Ad.toModel() =
         id,
         thumbnail,
         formatPrice(price),
-        formatTitle(typology, operation))
+        formatTitle(typology, operation),
+        detailUrl
+    )
 
 private fun formatPrice(price: Double) = "$price €"
 private fun formatTitle(typology: Typology, operation: Operation) =
     CoreAssembler.stringsProvider.string(
         R.string.typology_at_operation,
         typology.string(),
-        operation.string().toLowerCase())
+        operation.string().toLowerCase()
+    )
